@@ -1,10 +1,8 @@
-> If you have found dotenv-expand useful, consider checking out [dotenvx](https://github.com/dotenvx/dotenvx) for encrypting your `.env` files. Thank you for using dotenv. 🙏
-
 # dotenv-expand [![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand) [![downloads](https://img.shields.io/npm/dw/dotenv-expand)](https://www.npmjs.com/package/dotenv-expand)
 
 <img src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.svg" alt="dotenv" align="right" width="200" />
 
-Dotenv-expand is a zero-dependency module that adds variable expansion, command substitution, and encrypted value support on top of [dotenv](https://github.com/motdotla/dotenv).
+Dotenv-expand is a zero-dependency module that expands environment variables, runs command substitutions, and decrypts encrypted values on top of [dotenv](https://github.com/motdotla/dotenv).
 
 &nbsp;
 
@@ -203,6 +201,12 @@ dotenv-expand is a separate module (without knowledge of the loading of `process
 
 ## Docs
 
+### SDK
+
+Dotenv-expand exposes one function:
+
+* `expand`
+
 ### Expand
 
 `expand` expands, evaluates, and decrypts values in a dotenv result:
@@ -239,9 +243,21 @@ The parsed key-value object to expand. This is normally the result of `dotenv.co
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
+&nbsp;
+
+## Related Tools
+
+* [Load environment variables with dotenv](https://github.com/motdotla/dotenv)
+* [Cloak your secrets in VS Code](https://marketplace.visualstudio.com/items?itemName=dotenv.dotenv-vscode)
+* [Encrypt your .env files with dotenvx](https://github.com/dotenvx/dotenvx)
+
+&nbsp;
+
 ## CHANGELOG
 
 See [CHANGELOG.md](CHANGELOG.md).
+
+&nbsp;
 
 ## Who's using dotenv-expand?
 
