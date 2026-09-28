@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/dotenvx/dotenv-expand/compare/v1000.0.0...master)
+## [Unreleased](https://github.com/dotenvx/dotenv-expand/compare/v1000.0.1...master)
+
+## [1000.0.1](https://github.com/dotenvx/dotenv-expand/compare/v1000.0.0...v1000.0.1) (2026-09-28)
+
+### Changed
+
+- Update bundled `@dotenvx/primitives` from 2.1.1 to 3.0.3. Expansion, command substitution, and decryption behavior are unchanged.
 
 ## [1000.0.0](https://github.com/motdotla/dotenv-expand/compare/v12.0.3...v1000.0.0) (2026-07-29)
 
