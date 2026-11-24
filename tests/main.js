@@ -506,6 +506,43 @@ t.test('does not attempt to expand password if already existed in processEnv', c
   ct.end()
 })
 
+t.test('preserves literal backslash-dollar sequences already in process.env', ct => {
+  const originalProcessEnv = process.env
+  const preset = 'C:\\$Recycle.Bin'
+
+  try {
+    process.env = { BACKUP_PATH: preset }
+    const options = { parsed: { BACKUP_PATH: 'from-file', FILE_VALUE: 'pa\\$\\$word' } }
+    const expanded = dotenvExpand.expand(options)
+
+    ct.equal(expanded, options)
+    ct.equal(expanded.parsed.BACKUP_PATH, preset)
+    ct.equal(process.env.BACKUP_PATH, preset)
+    ct.equal(expanded.parsed.FILE_VALUE, 'pa$$word')
+    ct.equal(process.env.FILE_VALUE, 'pa$$word')
+  } finally {
+    process.env = originalProcessEnv
+  }
+
+  ct.end()
+})
+
+t.test('preserves literal backslash-dollar sequences already in a custom processEnv', ct => {
+  const preset = 'C:\\$Recycle.Bin'
+  const processEnv = { BACKUP_PATH: preset }
+  const options = { parsed: { BACKUP_PATH: 'from-file', FILE_VALUE: 'pa\\$\\$word' }, processEnv }
+  const expanded = dotenvExpand.expand(options)
+
+  ct.equal(expanded, options)
+  ct.equal(expanded.parsed.BACKUP_PATH, preset)
+  ct.equal(processEnv.BACKUP_PATH, preset)
+  ct.equal(expanded.parsed.FILE_VALUE, 'pa$$word')
+  ct.equal(processEnv.FILE_VALUE, 'pa$$word')
+  ct.equal(process.env.BACKUP_PATH, undefined)
+
+  ct.end()
+})
+
 t.test('does not expand dollar sign that are not variables', ct => {
   const dotenv = {
     parsed: {
